@@ -1,0 +1,42 @@
+{
+  "name": "WSSVACInfoEP",
+  "path": "/ws/progress/v1/WSSVACInfoEP",
+  "version": "1.0.1",
+  "state": "published",
+  "organization": "API Development",
+  "apiSpecification": {
+    "resource": "src/main/resources/${ENV}.wsdl.url"
+  },
+  "backendBasepath": "${BACKEND_PROTOCOL}://${BACKEND_HOST}:${BACKEND_PORT}/WSSVACInfoEP",
+  "securityProfiles": [
+    {
+      "name": "_default",
+      "isDefault": true,
+      "devices": [
+        {
+          "name": "API Key",
+          "type": "apiKey",
+          "order": 1,
+          "properties": {
+            "apiKeyFieldName": "KeyId",
+            "takeFrom": "HEADER",
+            "removeCredentialsOnSuccess": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "applications": [
+    {
+      "name": "axwaytest",
+      "enabled": true,
+      "state": "approved",
+      "permissions": [],
+      "appScopes": []
+    }
+  ],
+  "clientOrganizations": [
+    "API Development"
+  ],
+  "image": "soap-icon.png"
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="WSSVACInfoEP" targetNamespace="urn:WSSVACInfoEP" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:WSSVACInfoEP" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:prodata="urn:schemas-progress-com:xml-prodata:0001" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:S1="urn:soap-fault:details" xmlns:S2="urn:WSSVACInfoEP:WSSVACInfoEP">
+<wsdl:documentation>EncodingType=DOC_LITERAL, WSA_Product=11.7.5 - Fri Jun  7 08:24:07 EDT 2019</wsdl:documentation>
+  <wsdl:types>
+<schema elementFormDefault="unqualified" targetNamespace="urn:soap-fault:details" xmlns="http://www.w3.org/2001/XMLSchema"><element name="FaultDetail"><complexType><sequence><element name="errorMessage" type="xsd:string"/><element name="requestID" type="xsd:string"/></sequence></complexType></element></schema>
+<schema elementFormDefault="qualified" targetNamespace="urn:WSSVACInfoEP:WSSVACInfoEP" xmlns="http://www.w3.org/2001/XMLSchema"><complexType name="APIgetSVACDtlbyMbrKeyEP_SVACDtlRow"><sequence><element name="policy-no" nillable="true" type="xsd:string"/><element name="cert-no" nillable="true" type="xsd:int"/><element name="nav" nillable="true" type="xsd:decimal"/></sequence></complexType><complexType name="APIgetSVACDtlbyMbrKeyEP_SVACDtlParam"><sequence><element maxOccurs="unbounded" minOccurs="0" name="SVACDtlRow" type="S2:APIgetSVACDtlbyMbrKeyEP_SVACDtlRow"/></sequence></complexType><element name="APIgetSVACDtlbyMbrKeyEP"><complexType><sequence><element name="ipMbrKey" nillable="true" type="xsd:string"/><element name="ipRefDate" nillable="true" type="xsd:date"/></sequence></complexType></element><element name="APIgetSVACDtlbyMbrKeyEPResponse"><complexType><sequence><element name="result" nillable="true" type="xsd:string"/><element name="opHasSvc" nillable="true" type="xsd:boolean"/><element name="SVACDtl" nillable="true" type="S2:APIgetSVACDtlbyMbrKeyEP_SVACDtlParam"/><element name="opReturnError" nillable="true" type="xsd:string"/></sequence></complexType></element></schema>
+  </wsdl:types>
+  <wsdl:message name="FaultDetailMessage">
+    <wsdl:part name="FaultDetail" element="S1:FaultDetail"/>
+  </wsdl:message>
+  <wsdl:message name="WSSVACInfoEP_APIgetSVACDtlbyMbrKeyEP">
+    <wsdl:part name="parameters" element="S2:APIgetSVACDtlbyMbrKeyEP"/>
+  </wsdl:message>
+  <wsdl:message name="WSSVACInfoEP_APIgetSVACDtlbyMbrKeyEPResponse">
+    <wsdl:part name="parameters" element="S2:APIgetSVACDtlbyMbrKeyEPResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="WSSVACInfoEPObj">
+    <wsdl:operation name="APIgetSVACDtlbyMbrKeyEP">
+      <wsdl:input message="tns:WSSVACInfoEP_APIgetSVACDtlbyMbrKeyEP"/>
+      <wsdl:output message="tns:WSSVACInfoEP_APIgetSVACDtlbyMbrKeyEPResponse"/>
+      <wsdl:fault name="WSSVACInfoEPFault" message="tns:FaultDetailMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSSVACInfoEPObj" type="tns:WSSVACInfoEPObj">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="APIgetSVACDtlbyMbrKeyEP">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSSVACInfoEPFault">
+        <soap:fault name="WSSVACInfoEPFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSSVACInfoEPService">
+    <wsdl:port name="WSSVACInfoEPObj" binding="tns:WSSVACInfoEPObj">
+<wsdl:documentation></wsdl:documentation>
+      <soap:address location="http://192.168.17.139:8080/wsaAPItest/wsa1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
